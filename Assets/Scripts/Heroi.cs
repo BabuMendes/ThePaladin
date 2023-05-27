@@ -25,6 +25,7 @@ public class Heroi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ControleAtaque();
         Mover();
         Pular();
     }
@@ -36,7 +37,7 @@ public class Heroi : MonoBehaviour
         Vector3 velocidadeCorrigida = velocidadeX * transform.right + velocidadeZ * transform.forward;
 
         Corpo.velocity = new Vector3(velocidadeCorrigida.x, Corpo.velocity.y, velocidadeCorrigida.z);
-        
+
         if (Corpo.velocity.magnitude > 1)
         {
             ControlAnim.SetBool("Andar", true);
@@ -65,6 +66,14 @@ public class Heroi : MonoBehaviour
         else
         {
             ControlAnim.SetBool("Pular", false);
+        }
+    }
+
+    void ControleAtaque()
+    {
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2) || Input.GetKeyDown(KeyCode.X))
+        {
+            ControlAnim.SetTrigger("Ataque");
         }
     }
 }
