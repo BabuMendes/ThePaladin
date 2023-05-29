@@ -28,6 +28,7 @@ public class Heroi : MonoBehaviour
         ControleAtaque();
         Mover();
         Pular();
+        Pegar();
     }
 
     void Mover()
@@ -51,7 +52,7 @@ public class Heroi : MonoBehaviour
 
     void Girar()
     {
-        float GiroY = Input.GetAxisRaw("Joy2") * 1000 * Time.deltaTime;
+        float GiroY = Input.GetAxis("Horizontal") * 100 * Time.deltaTime;
         transform.Rotate(Vector3.up * GiroY);
 
     }
@@ -69,11 +70,24 @@ public class Heroi : MonoBehaviour
         }
     }
 
+    void Pegar()
+    {
+        if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.Joystick1Button3))
+        {
+            ControlAnim.SetTrigger("Pegar");
+        }
+    }
+
     void ControleAtaque()
     {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button2) || Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.X))
         {
             ControlAnim.SetTrigger("Ataque");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Joystick1Button2))
+        {
+            ControlAnim.SetTrigger("Disparo");
         }
     }
 }
