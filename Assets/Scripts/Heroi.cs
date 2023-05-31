@@ -9,10 +9,13 @@ public class Heroi : MonoBehaviour
     private Vector3 Destino;
     public GameObject MeuAtaque;
     private Animator ControlAnim;
+    private GerenciadorDeObjetos Inventario;
 
     //Movimento
     private Rigidbody Corpo;
 
+    public float hp = 50;
+    public bool vivo = true;
 
 
     // Start is called before the first frame update
@@ -90,4 +93,14 @@ public class Heroi : MonoBehaviour
             ControlAnim.SetTrigger("Disparo");
         }
     }
+
+
+
+    public void Morrer()
+    {
+        vivo = false;
+        ControlAnim.SetBool("Morreu", true);
+    }
+
+
 }
