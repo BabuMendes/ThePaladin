@@ -14,7 +14,7 @@ public class Heroi : MonoBehaviour
     //Movimento
     private Rigidbody Corpo;
 
-    public float hp = 50;
+    public float hp = 1;
     public bool vivo = true;
 
 
@@ -64,7 +64,7 @@ public class Heroi : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
-            Corpo.AddForce(Vector3.up * 250);
+            Corpo.AddForce(Vector3.up * 10000);
             ControlAnim.SetBool("Pular", true);
         }
         else
