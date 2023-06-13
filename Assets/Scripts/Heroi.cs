@@ -18,6 +18,10 @@ public class Heroi : MonoBehaviour
     public bool vivo = true;
 
 
+    //Variaveis
+    public bool noChao = false;
+    public int qtdPulos = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,8 +68,11 @@ public class Heroi : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
-            Corpo.AddForce(Vector3.up * 10000);
-            ControlAnim.SetBool("Pular", true);
+            if (noChao == true)
+            {
+                ControlAnim.SetBool("Pular", true);
+            }
+            
         }
         else
         {
@@ -100,6 +107,12 @@ public class Heroi : MonoBehaviour
     {
         vivo = false;
         ControlAnim.SetBool("Morreu", true);
+    }
+
+    void Pulei()
+    {
+        Corpo.AddForce(Vector2.up * 10000);
+        noChao = false;
     }
 
 
