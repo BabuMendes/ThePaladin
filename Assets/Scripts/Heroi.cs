@@ -68,11 +68,13 @@ public class Heroi : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
-            if (noChao == true)
+            if (qtdPulos >0)
             {
                 ControlAnim.SetBool("Pular", true);
+                Corpo.AddForce(Vector3.up * 10000);
+                qtdPulos--;
             }
-            
+
         }
         else
         {
@@ -109,11 +111,22 @@ public class Heroi : MonoBehaviour
         ControlAnim.SetBool("Morreu", true);
     }
 
-    void Pulei()
+    /*void Pulei()
     {
         Corpo.AddForce(Vector2.up * 10000);
         noChao = false;
     }
+    */
 
-
+    private void OnTriggerEnter(Collider colidiu)
+    {
+        if (colidiu.gameObject.tag == "Chao")
+        {
+            qtdPulos = 1;
+        }
+        if (colidiu.gameObject.tag == "Espinho")
+        {
+            Morrer();
+        }
+    }
 }
