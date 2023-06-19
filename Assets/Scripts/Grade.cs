@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Grade : MonoBehaviour
 {
+    public GameObject Portal;
     private Animator ControlAnim;
     // Start is called before the first frame update
     void Start()
@@ -22,5 +23,9 @@ public class Grade : MonoBehaviour
         {
             ControlAnim.SetBool("Ativado", true);
         }
+    }
+    private void Abrindo()
+    {
+        Portal.GetComponent<BGrade>().Abrir();
     }
 }
