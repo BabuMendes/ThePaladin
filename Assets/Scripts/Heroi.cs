@@ -19,7 +19,7 @@ public class Heroi : MonoBehaviour
 
 
     //Variaveis
-    public bool noChao = false;
+    public bool noChao = true;
     public int qtdPulos = 1;
 
     // Start is called before the first frame update
@@ -40,19 +40,22 @@ public class Heroi : MonoBehaviour
 
     void Mover()
     {
-        float velocidadeZ = Input.GetAxis("Vertical") * 3;
+        float velocidadeZ = Input.GetAxis("Vertical") * 6;
         float velocidadeX = 0;
         Vector3 velocidadeCorrigida = velocidadeX * transform.right + velocidadeZ * transform.forward;
 
         Corpo.velocity = new Vector3(velocidadeCorrigida.x, Corpo.velocity.y, velocidadeCorrigida.z);
 
-        if (Corpo.velocity.magnitude > 1)
+        if (noChao == true)
         {
-            ControlAnim.SetBool("Andar", true);
-        }
-        else
-        {
-            ControlAnim.SetBool("Andar", false);
+            if (Corpo.velocity.magnitude > 1)
+            {
+                ControlAnim.SetBool("Andar", true);
+            }
+            else
+            {
+                ControlAnim.SetBool("Andar", false);
+            }
         }
         Girar();
     }
@@ -71,8 +74,9 @@ public class Heroi : MonoBehaviour
             if (qtdPulos >0)
             {
                 ControlAnim.SetBool("Pular", true);
-                Corpo.AddForce(Vector3.up * 10000);
+                Corpo.AddForce(Vector3.up * 1000);
                 qtdPulos--;
+                noChao = false;
             }
 
         }
@@ -110,19 +114,13 @@ public class Heroi : MonoBehaviour
         vivo = false;
         ControlAnim.SetBool("Morreu", true);
     }
-
-    /*void Pulei()
-    {
-        Corpo.AddForce(Vector2.up * 10000);
-        noChao = false;
-    }
-    */
-
+    
     private void OnTriggerEnter(Collider colidiu)
     {
         if (colidiu.gameObject.tag == "Chao")
         {
             qtdPulos = 1;
+            noChao = true;
         }
         if (colidiu.gameObject.tag == "Espinho")
         {
