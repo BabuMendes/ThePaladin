@@ -127,4 +127,12 @@ public class Heroi : MonoBehaviour
             Morrer();
         }
     }
+    public void AtivarAtk()
+    {
+        MeuAtaque.SetActive(true);
+    }
+    public void DesativarAtk()
+    {
+        MeuAtaque.SetActive(false);
+    }
 }
