@@ -12,6 +12,8 @@ TagManager:
   - Ataque
   - Inimigo
   - Saida
+  - Laser
+  - Torre
   layers:
   - Default
   - TransparentFX
