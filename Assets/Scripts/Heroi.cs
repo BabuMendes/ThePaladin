@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Heroi : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Heroi : MonoBehaviour
     private Vector3 Destino;
     public GameObject MeuAtaque;
     private Animator ControlAnim;
+    [SerializeField]private GerenciadorMenu GM;
     private GerenciadorDeObjetos Inventario;
 
     //Movimento
@@ -125,6 +127,10 @@ public class Heroi : MonoBehaviour
         if (colidiu.gameObject.tag == "Espinho")
         {
             Morrer();
+        }
+        if (colidiu.CompareTag("Saida"))
+        {
+            GM.Greetings();
         }
     }
     public void AtivarAtk()
