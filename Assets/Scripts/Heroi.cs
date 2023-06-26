@@ -42,7 +42,7 @@ public class Heroi : MonoBehaviour
 
     void Mover()
     {
-        float velocidadeZ = Input.GetAxis("Vertical") * 6;
+        float velocidadeZ = Input.GetAxis("Vertical") * 7;
         float velocidadeX = 0;
         Vector3 velocidadeCorrigida = velocidadeX * transform.right + velocidadeZ * transform.forward;
 
@@ -76,18 +76,14 @@ public class Heroi : MonoBehaviour
             if (qtdPulos >0)
             {
                 ControlAnim.SetBool("Pular", true);
-                Corpo.AddForce(Vector3.up * 1000);
                 qtdPulos--;
-                noChao = false;
             }
-
         }
         else
         {
             ControlAnim.SetBool("Pular", false);
         }
     }
-
     void Pegar()
     {
         if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.Joystick1Button3))
@@ -95,7 +91,6 @@ public class Heroi : MonoBehaviour
             ControlAnim.SetTrigger("Pegar");
         }
     }
-
     void ControleAtaque()
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.X))
@@ -108,9 +103,6 @@ public class Heroi : MonoBehaviour
             ControlAnim.SetTrigger("Disparo");
         }
     }
-
-
-
     public void Morrer()
     {
         vivo = false;
@@ -140,5 +132,10 @@ public class Heroi : MonoBehaviour
     public void DesativarAtk()
     {
         MeuAtaque.SetActive(false);
+    }
+    public void Pulei()
+    {
+        Corpo.AddForce(Vector3.up * 10000);
+        noChao = false;
     }
 }
