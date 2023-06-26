@@ -15,10 +15,8 @@ public class Heroi : MonoBehaviour
 
     //Movimento
     private Rigidbody Corpo;
-
     public float hp = 1;
     public bool vivo = true;
-
 
     //Variaveis
     public bool noChao = true;
@@ -47,17 +45,16 @@ public class Heroi : MonoBehaviour
         Vector3 velocidadeCorrigida = velocidadeX * transform.right + velocidadeZ * transform.forward;
 
         Corpo.velocity = new Vector3(velocidadeCorrigida.x, Corpo.velocity.y, velocidadeCorrigida.z);
-
-        if (noChao == true)
+        if (Corpo.velocity.magnitude > 1)
         {
-            if (Corpo.velocity.magnitude > 1)
+            if (noChao == true)
             {
                 ControlAnim.SetBool("Andar", true);
             }
-            else
-            {
-                ControlAnim.SetBool("Andar", false);
-            }
+        }
+        else
+        {
+            ControlAnim.SetBool("Andar", false);
         }
         Girar();
     }
@@ -75,8 +72,9 @@ public class Heroi : MonoBehaviour
         {
             if (qtdPulos >0)
             {
-                ControlAnim.SetBool("Pular", true);
+                ControlAnim.SetTrigger("Pular");
                 qtdPulos--;
+                noChao = false;
             }
         }
         else
@@ -125,6 +123,14 @@ public class Heroi : MonoBehaviour
             GM.Greetings();
         }
     }
+    private void OnTriggerStay(Collider colidiu)
+    {
+        if (colidiu.gameObject.tag == "Chao")
+        {
+            qtdPulos = 1;
+            noChao = true;
+        }
+    }
     public void AtivarAtk()
     {
         MeuAtaque.SetActive(true);
@@ -136,6 +142,5 @@ public class Heroi : MonoBehaviour
     public void Pulei()
     {
         Corpo.AddForce(Vector3.up * 10000);
-        noChao = false;
     }
 }
