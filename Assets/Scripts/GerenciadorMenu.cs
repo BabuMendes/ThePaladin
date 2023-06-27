@@ -51,4 +51,9 @@ public class GerenciadorMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Agradecimentos");
     }
+
+    public void Return()
+    {
+        SceneManager.LoadScene("MenuPrincipal");
+    }
 }
