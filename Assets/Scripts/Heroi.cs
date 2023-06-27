@@ -41,21 +41,37 @@ public class Heroi : MonoBehaviour
     void Mover()
     {
         float velocidadeZ = Input.GetAxis("Vertical") * 7;
-        float velocidadeX = 0;
+        float velocidadeX = Input.GetAxis("Horizontal2") * 5;
         Vector3 velocidadeCorrigida = velocidadeX * transform.right + velocidadeZ * transform.forward;
 
         Corpo.velocity = new Vector3(velocidadeCorrigida.x, Corpo.velocity.y, velocidadeCorrigida.z);
-        if (Corpo.velocity.magnitude > 1)
+        if (Corpo.velocity.magnitude > 1 && noChao == true)
         {
-            if (noChao == true)
+            if( velocidadeX == 0)
             {
                 ControlAnim.SetBool("Andar", true);
+                ControlAnim.SetBool("AndarL", false);
+                ControlAnim.SetBool("AndarR", false);
+            }
+            else if (velocidadeX > 0)
+            {
+                ControlAnim.SetBool("AndarR", true);
+                ControlAnim.SetBool("Andar", false);
+                ControlAnim.SetBool("AndarL", false);
+            }
+            else
+            {
+                ControlAnim.SetBool("AndarL", true);
+                ControlAnim.SetBool("Andar", false);
+                ControlAnim.SetBool("AndarR", false);
             }
         }
         else
         {
             ControlAnim.SetBool("Andar", false);
+            ControlAnim.SetBool("AndarL", false);
         }
+
         Girar();
     }
 
