@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour
 {
-    public int hp = 5;
-    public GameObject AreaDeAtk;
+
+    public int hp = 2;
+    
+
 
     private void OnTriggerEnter(Collider colidiu)
     {
-        if(colidiu.gameObject.tag == "Ataque")
+        if (colidiu.gameObject.tag == "Espada")
         {
             TomeiDano();
         }
     }
+
     public void TomeiDano()
     {
         hp--;
@@ -21,13 +24,5 @@ public class Inimigo : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
-    public void AtivarAtk()
-    {
-        AreaDeAtk.SetActive(true);
-    }
-    public void DesativarAtk()
-    {
-        AreaDeAtk.SetActive(false);
     }
 }
