@@ -13,6 +13,7 @@ public class Dragao : MonoBehaviour
     public float distancePerseguir;
     public float distanciaAtacar;
     private Rigidbody Corpo;
+    public GameObject MeuAtaque;
 
     Animator animator;
 
@@ -102,10 +103,12 @@ public class Dragao : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    public void Atacar()
+    public void AtivarAtk()
     {
-
+        MeuAtaque.SetActive(true);
     }
-
+    public void DesativarAtk()
+    {
+        MeuAtaque.SetActive(false);
+    }
 }

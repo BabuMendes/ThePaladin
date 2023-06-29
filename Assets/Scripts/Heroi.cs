@@ -119,8 +119,11 @@ public class Heroi : MonoBehaviour
     }
     public void Morrer()
     {
-        vivo = false;
-        ControlAnim.SetTrigger("Morreu");
+        if(vivo == true)
+        {
+            vivo = false;
+            ControlAnim.SetTrigger("Morreu");
+        }
     }
     public void Morreu()
     {
