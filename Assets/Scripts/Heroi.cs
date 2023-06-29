@@ -120,9 +120,13 @@ public class Heroi : MonoBehaviour
     public void Morrer()
     {
         vivo = false;
-        ControlAnim.SetBool("Morreu", true);
+        ControlAnim.SetTrigger("Morreu");
     }
-    
+    public void Morreu()
+    {
+
+    }
+
     private void OnTriggerEnter(Collider colidiu)
     {
         if (colidiu.gameObject.tag == "Chao")

@@ -2797,7 +2797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7862391691550088030, guid: 716142d077ace9646bd2182748186c61, type: 3}
       propertyPath: m_Name
-      value: Botton002
+      value: Box002
       objectReference: {fileID: 0}
     - target: {fileID: -7862391691550088030, guid: 716142d077ace9646bd2182748186c61, type: 3}
       propertyPath: m_TagString
@@ -2821,7 +2821,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8aedbd82d747694429572599a0440d70, type: 2}
     - target: {fileID: 7742780737561719692, guid: 716142d077ace9646bd2182748186c61, type: 3}
       propertyPath: m_Name
-      value: Botton001
+      value: Box001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 716142d077ace9646bd2182748186c61, type: 3}
@@ -5070,7 +5070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7862391691550088030, guid: 716142d077ace9646bd2182748186c61, type: 3}
       propertyPath: m_Name
-      value: Botton002
+      value: Box002
       objectReference: {fileID: 0}
     - target: {fileID: -7862391691550088030, guid: 716142d077ace9646bd2182748186c61, type: 3}
       propertyPath: m_TagString
@@ -5086,7 +5086,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ac95af7d9e0927544891fc03eeec2236, type: 2}
     - target: {fileID: 7742780737561719692, guid: 716142d077ace9646bd2182748186c61, type: 3}
       propertyPath: m_Name
-      value: Botton001
+      value: Box001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 716142d077ace9646bd2182748186c61, type: 3}
@@ -7128,7 +7128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7862391691550088030, guid: 716142d077ace9646bd2182748186c61, type: 3}
       propertyPath: m_Name
-      value: Botton002
+      value: Box002
       objectReference: {fileID: 0}
     - target: {fileID: -7862391691550088030, guid: 716142d077ace9646bd2182748186c61, type: 3}
       propertyPath: m_TagString
@@ -7144,7 +7144,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d22321db3576c1c4484fd142245230ca, type: 2}
     - target: {fileID: 7742780737561719692, guid: 716142d077ace9646bd2182748186c61, type: 3}
       propertyPath: m_Name
-      value: Botton001
+      value: Box001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 716142d077ace9646bd2182748186c61, type: 3}
@@ -26871,8 +26871,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9032938023935060252}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.6, y: 0.5, z: 9.7}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 7.6, y: 0.5, z: 6.62}
   m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26883,7 +26883,7 @@ Transform:
   - {fileID: 963194228}
   m_Father: {fileID: 455969348}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!95 &9032938023935060255
 Animator:
   serializedVersion: 5
