@@ -13,6 +13,9 @@ public class Necromante : MonoBehaviour
     public float distancePerseguir;
     public float distanciaAtacar;
     private Rigidbody Corpo;
+    public GameObject MeuAtaque;
+    private bool podemover = true;
+    private bool morto = false;
 
     Animator animator;
 
@@ -79,33 +82,44 @@ public class Necromante : MonoBehaviour
 
     void Mover()
     {
-        Mago.SetDestination(Jogador.transform.position);
-        animator.SetBool("Correndo", true);
-        Mago.isStopped = false;
-        //Esqueleto.velocity = Vector3.zero;
+        if (podemover == true)
+        {
+            Mago.SetDestination(Jogador.transform.position);
+            animator.SetBool("Correndo", true);
+            Mago.isStopped = false;
+            //Esqueleto.velocity = Vector3.zero;
+        }
     }
 
 
     private void OnTriggerEnter(Collider colidiu)
     {
-        if (colidiu.gameObject.tag == "Espada")
+        if (morto == false)
         {
-            TomeiDano();
+            if (colidiu.gameObject.tag == "Espada")
+            {
+                TomeiDano();
+            }
         }
     }
 
     public void TomeiDano()
     {
-        hp--;
+        animator.SetTrigger("morto");
+        podemover = false;
+        morto = true;
         if (hp <= 0)
         {
             Destroy(this.gameObject);
         }
     }
-
-    public void Atacar()
+    public void AtivarAtk()
     {
-
+        MeuAtaque.SetActive(true);
+    }
+    public void DesativarAtk()
+    {
+        MeuAtaque.SetActive(false);
     }
 
 }

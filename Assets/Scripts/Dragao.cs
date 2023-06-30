@@ -14,6 +14,8 @@ public class Dragao : MonoBehaviour
     public float distanciaAtacar;
     private Rigidbody Corpo;
     public GameObject MeuAtaque;
+    private bool podemover = true;
+    private bool morto = false;
 
     Animator animator;
 
@@ -80,24 +82,32 @@ public class Dragao : MonoBehaviour
 
     void Mover()
     {
-        Reptil.SetDestination(Jogador.transform.position);
-        animator.SetBool("Correndo", true);
-        Reptil.isStopped = false;
-        //Esqueleto.velocity = Vector3.zero;
+        if (podemover == true)
+        {
+            Reptil.SetDestination(Jogador.transform.position);
+            animator.SetBool("Correndo", true);
+            Reptil.isStopped = false;
+            //Esqueleto.velocity = Vector3.zero;
+        }
     }
 
 
     private void OnTriggerEnter(Collider colidiu)
     {
-        if (colidiu.gameObject.tag == "Espada")
+        if (morto == false)
         {
-            TomeiDano();
+            if (colidiu.gameObject.tag == "Espada")
+            {
+                TomeiDano();
+            }
         }
     }
 
     public void TomeiDano()
     {
-        hp--;
+        animator.SetTrigger("morto");
+        podemover = false;
+        morto = true;
         if (hp <= 0)
         {
             Destroy(this.gameObject);

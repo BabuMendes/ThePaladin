@@ -17,6 +17,8 @@ public class Heroi : MonoBehaviour
     private Rigidbody Corpo;
     public float hp = 1;
     public bool vivo = true;
+    private bool podemover = true;
+    private float velocidadeATK = 1;
 
     //Variaveis
     public bool noChao = true;
@@ -40,39 +42,43 @@ public class Heroi : MonoBehaviour
 
     void Mover()
     {
-        float velocidadeZ = Input.GetAxis("Vertical") * 7;
-        float velocidadeX = Input.GetAxis("Horizontal2") * 5;
-        Vector3 velocidadeCorrigida = velocidadeX * transform.right + velocidadeZ * transform.forward;
-
-        Corpo.velocity = new Vector3(velocidadeCorrigida.x, Corpo.velocity.y, velocidadeCorrigida.z);
-        if (Corpo.velocity.magnitude > 1 && noChao == true)
+        if (podemover == true)
         {
-            if( velocidadeX == 0)
+            float velocidadeZ = Input.GetAxis("Vertical") * 7 * velocidadeATK;
+            float velocidadeX = Input.GetAxis("Horizontal2") * 5 * velocidadeATK;
+            Vector3 velocidadeCorrigida = velocidadeX * transform.right + velocidadeZ * transform.forward;
+
+            Corpo.velocity = new Vector3(velocidadeCorrigida.x, Corpo.velocity.y, velocidadeCorrigida.z);
+            if (Corpo.velocity.magnitude > 1 && noChao == true)
             {
-                ControlAnim.SetBool("Andar", true);
-                ControlAnim.SetBool("AndarL", false);
-                ControlAnim.SetBool("AndarR", false);
-            }
-            else if (velocidadeX > 0)
-            {
-                ControlAnim.SetBool("AndarR", true);
-                ControlAnim.SetBool("Andar", false);
-                ControlAnim.SetBool("AndarL", false);
+                if (velocidadeX == 0)
+                {
+                    ControlAnim.SetBool("Andar", true);
+                    ControlAnim.SetBool("AndarL", false);
+                    ControlAnim.SetBool("AndarR", false);
+                }
+                else if (velocidadeX > 0)
+                {
+                    ControlAnim.SetBool("AndarR", true);
+                    ControlAnim.SetBool("Andar", false);
+                    ControlAnim.SetBool("AndarL", false);
+                }
+                else
+                {
+                    ControlAnim.SetBool("AndarL", true);
+                    ControlAnim.SetBool("Andar", false);
+                    ControlAnim.SetBool("AndarR", false);
+                }
             }
             else
             {
-                ControlAnim.SetBool("AndarL", true);
                 ControlAnim.SetBool("Andar", false);
+                ControlAnim.SetBool("AndarL", false);
                 ControlAnim.SetBool("AndarR", false);
             }
-        }
-        else
-        {
-            ControlAnim.SetBool("Andar", false);
-            ControlAnim.SetBool("AndarL", false);
-        }
 
-        Girar();
+            Girar();
+        }
     }
 
     void Girar()
@@ -110,6 +116,7 @@ public class Heroi : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.X))
         {
             ControlAnim.SetTrigger("Ataque");
+            velocidadeATK = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Joystick1Button2))
@@ -122,12 +129,13 @@ public class Heroi : MonoBehaviour
         if(vivo == true)
         {
             vivo = false;
+            podemover = false;
             ControlAnim.SetTrigger("Morreu");
         }
     }
     public void Morreu()
     {
-
+        SceneManager.LoadScene("Derrota");
     }
 
     private void OnTriggerEnter(Collider colidiu)
@@ -165,5 +173,13 @@ public class Heroi : MonoBehaviour
     public void Pulei()
     {
         Corpo.AddForce(Vector3.up * 10000);
+    }
+    public void AtivarMovimento()
+    {
+        velocidadeATK = 1;
+    }
+    public void DesativarMovimento()
+    {
+        velocidadeATK = 0;
     }
 }

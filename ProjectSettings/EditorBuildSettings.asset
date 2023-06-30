@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/agradecimentos.unity
     guid: 8e53682085fe8e741a577c49d3d6295c
+  - enabled: 1
+    path: Assets/Scenes/Derrota.unity
+    guid: db3ce90484392044ebc0d241334f7ebd
   m_configObjects: {}

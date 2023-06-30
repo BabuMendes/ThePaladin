@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: '3Mosqueteiros '
+  companyName: GARdevs
   productName: The Paladin
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
